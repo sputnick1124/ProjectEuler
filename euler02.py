@@ -1,16 +1,14 @@
 from time import time
+from collections import deque
+from sys import argv
 
-fibs = [1,1]
-count,sums = 0,0
+n = int(argv[1])
+fibs = deque([1,1])
+count = 0
 t1=time()
-while fibs[count+1] + fibs[count] < 4e6:
-    fibs.append(fibs[count] + fibs[count+1])
-    count = count + 1
+while fibs[-1] < n:
+    fibs.append(fibs.popleft() + fibs[0])
+    count += fibs[-1] if not fibs[-1]%2 else 0
 
-
-for i in fibs:
-    if i%2 == 0:
-        sums+=i
-
-print(sums)
+print(count)
 print(time()-t1)
