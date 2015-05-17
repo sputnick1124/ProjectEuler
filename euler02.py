@@ -11,4 +11,4 @@ while fibs[-1] < n:
     count += fibs[-1] if not fibs[-1]%2 else 0
 
 print(count)
-print(time()-t1)
+print('%f seconds' % (time()-t1))
